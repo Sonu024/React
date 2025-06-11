@@ -1,15 +1,82 @@
-<!doctype html>
+ <!-- <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-     <link href="/src/styles.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
+
+<head>
+  <title>Simple Axios Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <h2>User List</h2>
+  <button onclick="getUsers()">Load Users</button>
+  <ul id="userList"></ul>
+
+  <script>
+    function getUsers() {
+      axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(function (response) {
+          let output = '';
+          response.data.forEach(function (user) {
+            output += `<li>${user.name}</li>`;
+          });
+          document.getElementById('userList').innerHTML = output;
+        })
+        .catch(function (error) {
+          console.error('Error fetching users:', error);
+        });
+    }
+  </script>
+</body>
+</html>  -->
+
+
+ 
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <form id="form" onsubmit="postIt()">
+    <input id="title" placeholder="title" />
+     <input id="body"  placeholder="body" />
+     <button type="submit">Submit</button>
+
+     <div id="result"></div>
+  </form>
   
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+
+  <script>
+       document.getElementById('form').addEventListener('submit', postIt);
+
+    function postIt(e) {
+      e.preventDefault();
+      const title = document.getElementById("title").value;
+       const body = document.getElementById("body").value;
+
+      axios.post('https://jsonplaceholder.typicode.com/posts',{
+        title: title,
+        body: body
+      })
+      .then(function(response){
+          document.getElementById('result').innerHTML = `
+            <p><strong>ID:</strong> ${response.data.id}</p>
+          Title: ${response.data.title}, Body: ${response.data.body}`
+      })
+      .catch(function(error){
+         document.getElementById('result').innerHTML = `Error: ${error}`
+      })
+    }
+  </script>
+</body>
+</html>   -->
+
+
+
+
+   
+
